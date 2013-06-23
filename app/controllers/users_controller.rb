@@ -1,10 +1,6 @@
-class UsersController < AuthorizedController
-  before_filter :authenticate_user!
-
+class UsersController < ApplicationController
   def index
-    @search = User.search(params[:q])
-    @users = @search.result
-    @users = @users.page(params[:page])
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
