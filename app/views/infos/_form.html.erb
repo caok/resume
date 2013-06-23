@@ -1,32 +1,17 @@
-<%= form_for(@info) do |f| %>
-  <% if @info.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@info.errors.count, "error") %> prohibited this info from being saved:</h2>
-
-      <ul>
-      <% @info.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for [@user, @user.infos.new] do |f| %>
   <div class="field">
-    <%= f.label :label %><br />
-    <%= f.text_field :label %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
   </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
+  <%= f.hidden_field :user_id %>
   <div class="actions">
     <%= f.submit %>
   </div>

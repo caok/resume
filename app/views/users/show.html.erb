@@ -17,3 +17,23 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<% @infos.each do |info| %>
+  <p>
+  <b><%= info.title %></b>
+    <%= info.content %>
+  </p>
+<% end %>
+
+<%= render "infos/form" %>
+
+
+<% @projects.each do |project| %>
+  <%= project.name %>
+  <%= project.url %>
+  <%= project.created_at %>
+  <%= project.finished_at %>
+  <%= project.introduction %>
+<% end %>
+
+<%= render "projects/form" %>
