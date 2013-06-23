@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Label:</b>
+  <%= @info.label %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @info.content %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @info.type %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @info.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_info_path(@info) %> |
+<%= link_to 'Back', infos_path %>
