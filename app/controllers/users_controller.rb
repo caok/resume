@@ -17,6 +17,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def resume
+    @user = User.find(params[:id])
+    @infos = @user.infos.order(:category)
+    @projects = @user.projects
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def new
     @user = User.new
 

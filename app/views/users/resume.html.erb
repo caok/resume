@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Back', users_path %> |
 
 <p>
   <b>Name:</b>
@@ -15,20 +15,12 @@
   <%= @user.admin %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %> |
-<%= link_to 'Resume', resume_user_path(@user) %> |
-<%= link_to 'update_by_github', update_by_github_user_path(@user), method: :put %>
-
 <% @infos.each do |info| %>
   <p>
   <b><%= info.title %></b>
     <%= info.content %>
   </p>
 <% end %>
-
-<%= render "infos/form" %>
-
 
 <% @projects.each do |project| %>
   <%= project.name %>
@@ -39,4 +31,3 @@
   <hr />
 <% end %>
 
-<%= render "projects/form" %>

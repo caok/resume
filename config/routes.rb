@@ -3,6 +3,7 @@ Resume::Application.routes.draw do
     resources :projects
     resources :infos
     put 'update_by_github', :on => :member
+    get 'resume', :on => :member
   end
 
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
