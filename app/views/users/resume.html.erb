@@ -33,13 +33,24 @@
 </div>
 
 <div id='projects'>
+  <div class='timeline'>
+  <div class="line"></div>
+
+  <div class="year first"><span><%= year = Date.today.year %></span></div>
   <% @projects.each do |project| %>
-    <%= project.name %>
-    <%= project.url %>
-    <%= project.created_at %>
-    <%= project.finished_at %>
-    <%= project.introduction %>
-    <hr />
+    <%- if year == project.created_at.year -%>
+      <div class='entry' href="<%= project.url %>">
+    <%- else -%>
+      <%- year = project.created_at.year -%>
+      <div class="year first"><span><%= year %></span></div>
+      <div class='entry offset-first' href="<%= project.url %>">
+    <%- end -%>
+        <h2><%= project.name %></h2>
+        <%= project.created_at %>
+        <%= project.finished_at %>
+        <p><%= project.introduction %></p>
+      </div>
   <% end %>
+</div>
 </div>
 
