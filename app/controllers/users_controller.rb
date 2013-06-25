@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @infos = @user.infos.order(:category)
-    @projects = @user.projects
+    @projects = @user.projects.order('created_at DESC')
 
     respond_to do |format|
       format.html # show.html.erb
