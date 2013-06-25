@@ -24,6 +24,7 @@
   <p>
   <b><%= info.title %></b>
     <%= info.content %>
+    <%= link_to 'Destroy', [@user, info], method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 <% end %>
 
@@ -36,6 +37,7 @@
   <%= project.created_at %>
   <%= project.finished_at %>
   <%= project.introduction %>
+  <%= link_to 'Destroy', [@user, project], method: :delete, data: { confirm: 'Are you sure?' } %>
   <hr />
 <% end %>
 

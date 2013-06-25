@@ -1,33 +1,45 @@
-<%= link_to 'Back', users_path %> |
+<%= link_to 'Back', users_path %>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Github name:</b>
-  <%= @user.github_name %>
-</p>
-
-<p>
-  <b>Admin:</b>
-  <%= @user.admin %>
-</p>
-
-<% @infos.each do |info| %>
+<div id='user'>
   <p>
-  <b><%= info.title %></b>
-    <%= info.content %>
+    <b>Name:</b>
+    <%= @user.name %>
   </p>
-<% end %>
 
-<% @projects.each do |project| %>
-  <%= project.name %>
-  <%= project.url %>
-  <%= project.created_at %>
-  <%= project.finished_at %>
-  <%= project.introduction %>
-  <hr />
-<% end %>
+  <p>
+    <b>Github name:</b>
+    <%= @user.github_name %>
+  </p>
+</div>
+
+<div id='per_infos'>
+  <% @per_infos.each do |info| %>
+    <p>
+    <b><%= info.title %></b>
+      <%= info.category %>
+      <%= info.content %>
+    </p>
+  <% end %>
+</div>
+
+<div id='skills'>
+  <% @skills.each do |skill| %>
+    <p>
+    <b><%= skill.title %></b>
+      <%= skill.category %>
+      <%= skill.content %>
+    </p>
+  <% end %>
+</div>
+
+<div id='projects'>
+  <% @projects.each do |project| %>
+    <%= project.name %>
+    <%= project.url %>
+    <%= project.created_at %>
+    <%= project.finished_at %>
+    <%= project.introduction %>
+    <hr />
+  <% end %>
+</div>
 

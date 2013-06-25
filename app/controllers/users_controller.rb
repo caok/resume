@@ -19,8 +19,9 @@ class UsersController < ApplicationController
 
   def resume
     @user = User.find(params[:id])
-    @infos = @user.infos.order(:category)
-    @projects = @user.projects
+    @per_infos = @user.infos.where(:category => 'per_info')
+    @skills = @user.infos.where(:category => 'skills')
+    @projects = @user.projects.order('created_at DESC')
 
     respond_to do |format|
       format.html
@@ -142,7 +143,7 @@ class UsersController < ApplicationController
       response = RestClient.get url
       repositories = JSON.parse response.body
       repositories.each do |repo|
-        user.projects.find_or_create_by_name_and_url(repo['name'], repo['git_url'],
+        user.projects.find_or_create_by_name_and_url(repo['name'], repo['html_url'],
                                                     :created_at => repo['created_at'],
                                                     :finished_at => repo['updated_at'],
                                                     :introduction => repo['description'])
