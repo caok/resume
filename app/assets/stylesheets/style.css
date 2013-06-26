@@ -133,3 +133,18 @@
 .timeline li {
   text-align: left;
 }
+
+a.no-decor {
+  text-decoration: none;
+}
+a.dark {
+  color: #333;
+}
+.meta {
+  margin-top: 25px;
+}
+.desc {
+  font-size: 0.8em;
+  display: block;
+  margin: 0px 13px 20px;
+}

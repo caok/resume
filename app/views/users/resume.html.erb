@@ -39,16 +39,17 @@
   <div class="year first"><span><%= year = Date.today.year %></span></div>
   <% @projects.each do |project| %>
     <%- if year == project.created_at.year -%>
-      <div class='entry' href="<%= project.url %>">
+      <div class='entry'>
     <%- else -%>
       <%- year = project.created_at.year -%>
       <div class="year first"><span><%= year %></span></div>
-      <div class='entry offset-first' href="<%= project.url %>">
+      <div class='entry offset-first'>
     <%- end -%>
-        <h2><%= project.name %></h2>
-        <%= project.created_at %>
-        <%= project.finished_at %>
-        <p><%= project.introduction %></p>
+        <a class='dark no-decor' target='_blank' href="<%= project.url %>">
+          <p class='meta'><%= project.happened_at %></p>
+          <h2><%= project.name %></h2>
+          <span class='desc'><%= project.introduction %></span>
+        </a>
       </div>
   <% end %>
 </div>
