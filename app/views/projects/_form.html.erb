@@ -1,4 +1,4 @@
-<%= form_for [@user, @user.projects.new] do |f| %>
+<%= form_for [@user, @user.projects.build] do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -19,7 +19,6 @@
     <%= f.label :introduction %><br />
     <%= f.text_area :introduction %>
   </div>
-  <%= f.hidden_field :user_id %>
   <div class="actions">
     <%= f.submit %>
   </div>

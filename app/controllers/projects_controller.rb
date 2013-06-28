@@ -40,17 +40,10 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
+    @user = User.find(params[:user_id])
+    @project = @user.projects.create(params[:project])
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project.user, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to user_path(@user)
   end
 
   # PUT /projects/1
@@ -72,12 +65,10 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project = Project.find(params[:id])
+    @user = User.find(params[:user_id])
+    @project = @user.projects.find(params[:id])
     @project.destroy
 
-    respond_to do |format|
-      format.html { redirect_to current_user  }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(@user)
   end
 end

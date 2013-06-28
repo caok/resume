@@ -40,17 +40,10 @@ class InfosController < ApplicationController
   # POST /infos
   # POST /infos.json
   def create
-    @info = Info.new(params[:info])
+    @user = User.find(params[:user_id])
+    @info = @user.infos.create(params[:info])
 
-    respond_to do |format|
-      if @info.save
-        format.html { redirect_to @info.user, notice: 'Info was successfully created.' }
-        format.json { render json: @info, status: :created, location: @info }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @info.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to user_path(@user)
   end
 
   # PUT /infos/1
@@ -72,12 +65,10 @@ class InfosController < ApplicationController
   # DELETE /infos/1
   # DELETE /infos/1.json
   def destroy
-    @info = Info.find(params[:id])
+    @user = User.find(params[:user_id])
+    @info = @user.infos.find(params[:id])
     @info.destroy
 
-    respond_to do |format|
-      format.html { redirect_to current_user }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(@user)
   end
 end
